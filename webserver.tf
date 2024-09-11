@@ -13,8 +13,8 @@ resource azurerm_network_interface NIC-Webserver {
 	 name = "NIC-WS"
 	 location = var.Location
 	 resource_group_name = var.ResG
-	 ip_forwarding_enabled = false
-	 accelerated_networking_enabled  = false
+	 enable_ip_forwarding = false
+	 enable_accelerated_networking  = false
 	 ip_configuration {
 		 name = "nicws1"
 		 subnet_id = "${azurerm_subnet.sNet-1.id}"
