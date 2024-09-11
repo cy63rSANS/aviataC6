@@ -1,0 +1,15 @@
+#cloud-config
+users:
+  - default
+  - name: systembuild
+    gecos: systembuild
+    primary_group: admin
+    groups: users
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    lock_passwd: false
+package upgrade: true
+package_upgrade: true
+packages:
+  - apache2
+  - nodejs
+  - npm
