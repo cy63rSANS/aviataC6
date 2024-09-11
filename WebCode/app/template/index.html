@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log Errors</title>
+</head>
+<body>
+    <h1>Select Error to Log</h1>
+    <form id="logForm">
+        <label for="logType">Choose Log Type:</label>
+        <select id="logType" name="logType">
+            <option value="apache">Apache Log</option>
+            <option value="syslog">Syslog</option>
+            <option value="secure">Secure Log</option>
+        </select>
+
+        <label for="errorMessage">Choose an Error:</label>
+        <select id="errorMessage" name="errorMessage">
+            <option value="[WebAppError] Apache: Invalid URL accessed.">Apache: Invalid URL accessed</option>
+            <option value="[WebAppError] Apache: Unauthorized access attempt.">Apache: Unauthorized access attempt</option>
+            <option value="[WebAppError] Syslog: Invalid login attempt detected.">Syslog: Invalid login attempt detected</option>
+            <option value="[WebAppError] Syslog: Application crashed unexpectedly.">Syslog: Application crashed unexpectedly</option>
+            <option value="[WebAppError] Secure: Multiple failed SSH login attempts.">Secure: Multiple failed SSH login attempts</option>
+        </select>
+
+        <br><br>
+        <button type="submit">Log Error</button>
+    </form>
+
+    <p id="responseMessage"></p>
+
+    <script>
+        const form = document.getElementById('logForm');
+        form.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const logType = document.getElementById('logType').value;
+            const errorMessage = document.getElementById('errorMessage').value;
+
+            const formData = new FormData();
+            formData.append('logType', logType);
+            formData.append('errorMessage', errorMessage);
+
+            const response = await fetch('/log_error', {
+                method: 'POST',
+                body: formData
+            });
+
+            const responseMessage = await response.text();
+            document.getElementById('responseMessage').innerText = responseMessage;
+        });
+    </script>
+</body>
+</html>
