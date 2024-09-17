@@ -33,4 +33,4 @@ $tableParams = @'
     }
 }
 '@
-Invoke-AzRestMethod -Path "/subscriptions/SUB/resourcegroups/SANSWorkshop/providers/microsoft.operationalinsights/workspaces/fairlinelogs/tables/apacheAccess_CL?api-version=2021-12-01-preview" -Method PUT -payload $tableParams
+Invoke-AzRestMethod -Path "/subscriptions/0ca097b8-df5d-406b-8155-a4c896584838/resourcegroups/AviataCloud/providers/microsoft.operationalinsights/workspaces/fairlinelogs/tables/apacheAccess2_CL?api-version=2021-12-01-preview" -Method PUT -payload $tableParams

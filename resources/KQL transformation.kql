@@ -1,0 +1,1 @@
+source | extend d=todynamic(RawData) | project Source_ip=tostring(d.SrcIP),TimeGenerated,TimeIngested=tostring(d.Time),Method=tostring(d.Method),Request=tostring(d.Request),Response=tostring(d.Response), RawData
