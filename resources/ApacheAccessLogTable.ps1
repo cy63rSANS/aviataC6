@@ -2,7 +2,7 @@ $tableParams = @'
 {
     "properties": {
         "schema": {
-               "name": "apacheAccess_CL",
+               "name": "apacheAccess2_CL",
                "columns": [
         {
                                 "name": "SrcIP",
