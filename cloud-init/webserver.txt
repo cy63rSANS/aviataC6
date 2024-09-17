@@ -24,7 +24,8 @@ runcmd:
   - cd /source
   - sudo wget https://sharedstorage24.blob.core.windows.net/aviatac6/WebCode.tar
   - sudo tar -xvf WebCode.tar -C /source
-  - sudo mv /source/app.py /app
-  - sudo mv /source/template /app/
+  - sudo mv /source/WebCode/app/app.py /app
+  - sudo mv /source/WebCode/static/ /app/
+  - sudo mv /source/WebCode/app/templates/ /app
   - cd /app
   - python3 app.py 
