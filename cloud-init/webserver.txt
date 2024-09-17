@@ -17,7 +17,6 @@ packages:
   - python3-pip
 
 runcmd:
-  - pip install flask
   - sudo mkdir -p /source
   - sudo mkdir -p /app
   - sudo service apache2 start
@@ -28,4 +27,5 @@ runcmd:
   - sudo mv /source/WebCode/static/ /app/
   - sudo mv /source/WebCode/app/templates/ /app
   - cd /app
-  - python3 app.py 
+  - pip install flask
+  - python3 app.py

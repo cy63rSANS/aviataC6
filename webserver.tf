@@ -40,14 +40,14 @@ resource "azurerm_virtual_machine" "webserver" {
   }
 
   os_profile {
-    computer_name = "Workshopvm1"
-    admin_username = "workshopadmin"
+    computer_name = "aviatacloudc6"
+    admin_username = "systembuild"
     admin_password = "${random_string.vmpassword.id}"
     custom_data = local.userdata
   }
 
   storage_os_disk {
-      name          = "webserver"
+      name          = "aviatacloudc6"
       create_option = "FromImage"
       disk_size_gb  = "32"
       os_type       = "Linux"
