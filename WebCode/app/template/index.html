@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Log Errors</title>
+    <title>Long Entry Generator</title>
 </head>
 <body>
-    <h1>Select Error to Log</h1>
+    <h1>Select Error type to Log</h1>
     <form id="logForm">
         <label for="logType">Choose Log Type:</label>
         <select id="logType" name="logType">
@@ -17,11 +17,11 @@
 
         <label for="errorMessage">Choose an Error:</label>
         <select id="errorMessage" name="errorMessage">
-            <option value="[WebAppError] Apache: Invalid URL accessed.">Apache: Invalid URL accessed</option>
-            <option value="[WebAppError] Apache: Unauthorized access attempt.">Apache: Unauthorized access attempt</option>
-            <option value="[WebAppError] Syslog: Invalid login attempt detected.">Syslog: Invalid login attempt detected</option>
-            <option value="[WebAppError] Syslog: Application crashed unexpectedly.">Syslog: Application crashed unexpectedly</option>
-            <option value="[WebAppError] Secure: Multiple failed SSH login attempts.">Secure: Multiple failed SSH login attempts</option>
+            <option value="[LogGenerator] Apache: Invalid URL accessed.">Apache: Invalid URL accessed</option>
+            <option value="[LogGenerator] Apache: Unauthorized access attempt.">Apache: Unauthorized access attempt</option>
+            <option value="[LogGenerator] Syslog: Invalid login attempt detected.">Syslog: Invalid login attempt detected</option>
+            <option value="[LogGenerator] Syslog: Application crashed unexpectedly.">Syslog: Application crashed unexpectedly</option>
+            <option value="[LogGenerator] Secure: Multiple failed SSH login attempts.">Secure: Multiple failed SSH login attempts</option>
         </select>
 
         <br><br>
