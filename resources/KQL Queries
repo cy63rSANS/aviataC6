@@ -1,0 +1,15 @@
+Heartbeat
+| where TimeGenerated > ago(24h)
+| where Computer has "Webserver"
+| project TimeGenerated, Category, Version
+| order by TimeGenerated desc
+
+
+Syslog
+| where TimeGenerated > ago(48h)
+| order by TimeGenerated desc
+
+
+apacheAccess_CL
+| project TimeGenerated, Request, HTTPcode, Method, SrcIP
+
