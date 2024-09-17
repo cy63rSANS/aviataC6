@@ -13,3 +13,18 @@ packages:
   - apache2
   - nodejs
   - npm
+  - python3
+  - python3-pip
+
+runcmd:
+  - pip install flask
+  - sudo mkdir -p /source
+  - sudo mkdir -p /app
+  - sudo service apache2 start
+  - cd /source
+  - sudo wget https://sharedstorage24.blob.core.windows.net/aviatac6/WebCode.tar
+  - sudo tar -xvf WebCode.tar -C /source
+  - sudo mv /source/app.py /app
+  - sudo mv /source/template /app/
+  - cd /app
+  - python3 app.py 
