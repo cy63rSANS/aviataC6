@@ -26,6 +26,9 @@ runcmd:
   - sudo mv /source/WebCode/app/app.py /app
   - sudo mv /source/WebCode/static/ /app/
   - sudo mv /source/WebCode/app/templates/ /app
+  - sudo rm /var/www/html/index.html
+  - sudo mv /source/WebCode/index.html /var/www/html/index.html
+  - sudo mv /source/WebCode/Chapter6.jpg /var/www/html/
   - cd /app
   - pip install flask
   - python3 app.py

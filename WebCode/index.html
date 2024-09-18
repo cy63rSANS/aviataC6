@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber Security & Azure Facts</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #2196F3; /* Initial color (Material Blue) */
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            transition: background-color 2s ease-in-out; /* Smooth background color change */
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        .fact {
+            font-size: 2rem;
+            opacity: 0;
+            transform: scale(0.8); /* Start smaller */
+            transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+            position: absolute;
+        }
+
+        .fact.active {
+            opacity: 1;
+            transform: scale(1.2); /* Increase size */
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .letter {
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.3s, transform 0.3s;
+        }
+
+        .letter.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Ensure spaces between words */
+        .space {
+            width: 0.5em; /* Space width between letters */
+        }
+    </style>
+</head>
+<body>
+    <img id="myImage" src="chapter6.jpg" alt="Description of the image">
+
+    <div class="container">
+        <h1>Cyber Security Facts</h1>
+        <div id="fact1" class="fact active" data-text="The average time to detect a cyber incident is 197 days."></div>
+        <div id="fact2" class="fact" data-text="The average time to recover from a cyber incident is 69 days."></div>
+        <div id="fact3" class="fact" data-text="Ransomware attacks are increasingly targeting cloud environments. Attackers infiltrate cloud services, encrypt data, and demand payment for decryption keys, disrupting business operations."></div>
+        <div id="fact4" class="fact" data-text="There are an estimated 5 million VMs running on Azure globally at any given time."></div>
+        <div id="fact5" class="fact" data-text="Weak or misconfigured IAM policies are a significant risk in public cloud services. Poor identity management can lead to unauthorized access to sensitive data and resources."></div>
+        <dev id="fact6" class="fact" data-text="Many organizations struggle to ensure their cloud setup meets regulatory standards."></div>
+
+    <script>
+        const facts = document.querySelectorAll('.fact');
+        let currentFact = 0;
+
+        const colors = [
+            '#F44336',  // Red
+            '#E91E63',  // Pink
+            '#9C27B0',  // Purple
+            '#673AB7',  // Deep Purple
+            '#3F51B5',  // Indigo
+            '#03A9F4',  // Light Blue
+            '#00BCD4',  // Cyan
+            '#009688',  // Teal
+            '#4CAF50',  // Green
+            '#FF9800',  // Orange
+            '#FFC107'   // Amber
+        ];
+
+        let currentColorIndex = 0;
+
+        function splitTextIntoLetters(factElement) {
+            const text = factElement.getAttribute('data-text');
+            factElement.innerHTML = '';
+            text.split('').forEach((char, index) => {
+                const span = document.createElement('span');
+                span.classList.add('letter');
+                if (char === ' ') {
+                    span.classList.add('space'); // Add space class for empty spaces
+                }
+                span.style.transitionDelay = `${index * 0.05}s`; // Stagger the appearance of each letter
+                span.textContent = char === ' ' ? '\u00A0' : char; // Preserve spaces
+                factElement.appendChild(span);
+            });
+        }
+
+        facts.forEach(fact => splitTextIntoLetters(fact));
+
+        function cycleFacts() {
+            const currentLetters = facts[currentFact].querySelectorAll('.letter');
+            currentLetters.forEach(letter => letter.classList.remove('visible'));
+
+            facts[currentFact].classList.remove('active');
+            currentFact = (currentFact + 1) % facts.length;
+            facts[currentFact].classList.add('active');
+
+            const newLetters = facts[currentFact].querySelectorAll('.letter');
+            newLetters.forEach(letter => {
+                setTimeout(() => {
+                    letter.classList.add('visible');
+                }, 500); // Small delay before starting the animation
+            });
+
+            // Change background color
+            currentColorIndex = (currentColorIndex + 1) % colors.length;
+            document.body.style.backgroundColor = colors[currentColorIndex];
+        }
+
+        setInterval(cycleFacts, 5000); // Change fact and color every 5 seconds
+
+        // Initial letter reveal for the first fact
+        const firstLetters = facts[currentFact].querySelectorAll('.letter');
+        firstLetters.forEach(letter => {
+            setTimeout(() => {
+                letter.classList.add('visible');
+            }, 500); // Initial delay for the first fact
+        });
+    </script>
+
+</body>
+</html>
