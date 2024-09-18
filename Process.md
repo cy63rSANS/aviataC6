@@ -9,4 +9,5 @@ Add Data Coolection Rules for Custom data sets
 Demostrate and test
 Add Event Hub namespace (capacity, planning,)
 Create connector for Event Hub
-Connect Graylog. (maybe)
+Test Event Hub communications 
+
