@@ -3,17 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cyber Security & Azure Facts</title>
+    <title>Aviata Cloud Chapter 6</title>
     <style>
         body {
             margin: 0;
             padding: 0;
             font-family: 'Arial', sans-serif;
-            background-color: #2196F3; /* Initial color (Material Blue) */
+            background-color: #2196F3; /* Initial color */
             color: white;
             display: flex;
             justify-content: center;
             align-items: center;
+            flex-direction: column;
             height: 100vh;
             overflow: hidden;
             transition: background-color 2s ease-in-out; /* Smooth background color change */
@@ -21,6 +22,13 @@
 
         .container {
             text-align: center;
+            position: relative;
+        }
+
+        img {
+            max-width: 100%; /* Ensure the image doesn't exceed the page width */
+            height: auto; /* Maintain the aspect ratio */
+            margin-bottom: 20px; /* Add some space below the image */
         }
 
         .fact {
@@ -55,21 +63,28 @@
 
         /* Ensure spaces between words */
         .space {
-            width: 0.5em; /* Space width between letters */
+            width: 0.5em;
         }
     </style>
 </head>
 <body>
-    <img id="myImage" src="chapter6.jpg" alt="Description of the image">
 
+    <!-- Image Section -->
+    <div>
+        <img id="myImage" src="./Chapter6.jpg" alt="Aviata Cloud Chapter 6">
+    </div>
+
+    <!-- Content Section -->
     <div class="container">
-        <h1>Cyber Security Facts</h1>
-        <div id="fact1" class="fact active" data-text="The average time to detect a cyber incident is 197 days."></div>
-        <div id="fact2" class="fact" data-text="The average time to recover from a cyber incident is 69 days."></div>
-        <div id="fact3" class="fact" data-text="Ransomware attacks are increasingly targeting cloud environments. Attackers infiltrate cloud services, encrypt data, and demand payment for decryption keys, disrupting business operations."></div>
-        <div id="fact4" class="fact" data-text="There are an estimated 5 million VMs running on Azure globally at any given time."></div>
-        <div id="fact5" class="fact" data-text="Weak or misconfigured IAM policies are a significant risk in public cloud services. Poor identity management can lead to unauthorized access to sensitive data and resources."></div>
-        <dev id="fact6" class="fact" data-text="Many organizations struggle to ensure their cloud setup meets regulatory standards."></div>
+        <h1>Aviata Cloud Ace 2024</h1>
+        <div id="fact1" class="fact active" data-text="SANS 2024."></div>
+        <div id="fact2" class="fact" data-text="Aviata Cloud Workshop"></div>
+        <div id="fact3" class="fact" data-text="Chapter 6"></div>
+        <div id="fact4" class="fact" data-text="Making the switch"></div>
+        <div id="fact5" class="fact" data-text="to Azure Monitoring Agent"></div>
+        <div id="fact6" class="fact" data-text="Author: Simon Vernon"></div>
+        <div id="fact6" class="fact" data-text="linkeIn: https://www.linkedin.com/in/simon-vernon/"></div>
+    </div>
 
     <script>
         const facts = document.querySelectorAll('.fact');
