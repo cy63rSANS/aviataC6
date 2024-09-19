@@ -26,9 +26,8 @@ Steps to delete subscriptions at the end are also provided.
 3. Execute terraform init and terraform apply:
     `terraform init`
     `terraform apply`
-4. Check out the new assets in the resource group "SANSWorkshop", click on the virtual machine called 'Webserver1' and finds its public IP address. 
+4. Check out the new assets in the resource group "AviataCloud", click on the virtual machine called 'Webserver1' and finds its public IP address. 
 5. Browse to the Public IP, you should have a web site online (wait a few minutes if you don't)
-6. now execute the final build script back in your Azure shell. 
 7. You are now ready to start hardening the platform, follow the instructions in the document linked above.
 
 
