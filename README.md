@@ -1,4 +1,4 @@
-# SANS Aviata Cloud Chapter 5
+# SANS Aviata Cloud Chapter 6
 ## Workbook and lab content
 #### Simon Vernon, SANS 2024
 
