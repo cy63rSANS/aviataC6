@@ -41,4 +41,4 @@ $tableParams = @'
     }
 }
 '@
-Invoke-AzRestMethod -Path "/subscriptions/replace1-this-with-your-00identifier/resourcegroups/Aviata/providers/microsoft.operationalinsights/workspaces/AviataLogs/tables/apacheAccess_CL?api-version=2021-12-01-preview" -Method PUT -payload $tableParams
+Invoke-AzRestMethod -Path "/subscriptions/replace1-this-with-your-00identifier/resourcegroups/AviataCloud/providers/microsoft.operationalinsights/workspaces/AviataLogs/tables/apacheAccess_CL?api-version=2021-12-01-preview" -Method PUT -payload $tableParams
