@@ -1,7 +1,7 @@
 source | extend d=todynamic(RawData) | project Source_ip=tostring(d.SrcIP),TimeGenerated,TimeIngested=tostring(d.Time),Method=tostring(d.Method),Request=tostring(d.Request),Response=tostring(d.Response), RawData
 
 KQL Transitional scaler query for Apache Access log
-source | extend d=split(RawData," ") | project Src_IP=tostring(d[0]),TimeGenerated=todatetime(strcat(d[3]," ",d[4])),Method=tostring(d[5]),Request=tostring(d[6]),Response=tostring(d[8]),Size=toint(d[9]),Referrer=tostring(d[10]),UserAgent=tostring(d[11]), RawData
+source | extend d=split(RawData," ") | project Src_IP=tostring(d[0]),TimeGenerated=todatetime(strcat(d[3]," ",d[4])),Method=tostring(d[5]),Request=tostring(d[6]),Response=tostring(d[8]),Size=toint(d[9]),Referrer=tostring(d[10]),UserAgent=tostring(d[11]),Computer=tostring(d[12]), RawData
 
 KQL Transitional scaler query for Apache Error log
 source | extend d=split(RawData," ") | project TimeGenerated=todatetime(strcat(d[3]," ",d[4])),Source=tostring(d[5]),Process=tostring(d[6]),ErrorMSG=tostring(d[7]), RawData
