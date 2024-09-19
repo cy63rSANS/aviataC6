@@ -13,3 +13,43 @@ Syslog
 apacheAccess_CL
 | project TimeGenerated, Request, HTTPcode, Method, SrcIP
 
+Syslog
+| where ProcessName == "sshd" 
+| where SyslogMessage contains "Failed password" 
+| project TimeGenerated, HostName, ProcessName, SyslogMessage
+| order by TimeGenerated desc
+
+
+Syslog
+| where ProcessName == "sshd" // SSH daemon process
+| where SyslogMessage contains "Failed password" // Unsuccessful login attempt
+| extend IPAddress = extract("([0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3})", 0, SyslogMessage) // Extract IP address
+| project TimeGenerated, HostName, IPAddress, SyslogMessage
+| summarize Count = count() by IPAddress, HostName
+| order by Count desc
+
+Syslog
+| where ProcessName == "sshd" // SSH daemon process
+| where SyslogMessage contains "SSH" // SSH protocol messages
+| where SyslogMessage contains "no matching key exchange"
+| project TimeGenerated, HostName, SyslogMessage
+| order by TimeGenerated desc
+
+Syslog
+| where ProcessName == "sshd"
+| where SyslogMessage contains "Failed password"
+| summarize FailedAttempts = count() by User, IPAddress = extract("([0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3})", 0, SyslogMessage), bin(TimeGenerated, 1h)
+| where FailedAttempts > 5 // Adjust threshold based on environment
+| order by FailedAttempts desc
+
+Syslog
+| where SyslogMessage contains "/tmp/" or SyslogMessage contains "/var/tmp/"
+| where SyslogMessage contains "exec" // Detect execution messages
+| project TimeGenerated, HostName, ProcessName, SyslogMessage
+| order by TimeGenerated desc
+
+Syslog
+| where SyslogMessage contains "sudo" // Detect sudo usage
+| project TimeGenerated, HostName, User, SyslogMessage
+| order by TimeGenerated desc
+
