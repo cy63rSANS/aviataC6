@@ -14,7 +14,7 @@ provider "azurerm" {
       virtual_machine {
         delete_os_disk_on_deletion     = true
         graceful_shutdown              = false
-        skip_shutdown_and_force_delete = tru
+        skip_shutdown_and_force_delete = true
               }        
       log_analytics_workspace {
         permanently_delete_on_destroy = true
