@@ -5,3 +5,8 @@ source | extend d=split(RawData," ") | project Src_IP=tostring(d[0]),TimeGenerat
 
 KQL Transitional scaler query for Apache Error log
 source | extend d=split(RawData," ") | project TimeGenerated=todatetime(strcat(d[3]," ",d[4])),Source=tostring(d[5]),Process=tostring(d[6]),ErrorMSG=tostring(d[7]), RawData
+
+
+KQL Transitional scaler query for Apache Access log (2)
+
+source | extend Raw=tostring(RawData) | extend d=split(Raw," ") | extend SrcIP=tostring(d[0]), TimeGenerated=todatetime(replace("\\]", "", replace("\\[", "", strcat(d[3], " ", d[4])))), Method=trim('"', tostring(d[5])), Request=tostring(d[6]), HTTPcode=tostring(d[8]), Size=toint(d[9]), Referrer=iif(array_length(d) > 10, tostring(d[10]), ""), UserAgent=trim('"', strcat(iif(array_length(d) > 11, tostring(d[11]), ""), " ", iif(array_length(d) > 12, tostring(d[12]), ""), " ", iif(array_length(d) > 13, tostring(d[13]), ""), " ", iif(array_length(d) > 14, tostring(d[14]), ""))), Computer="", RawData=Raw | project SrcIP, TimeGenerated, Method, Request, HTTPcode, Size, UserAgent, Computer, RawData
