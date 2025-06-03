@@ -9,7 +9,7 @@ terraform {
 
 # Configure the Microsoft Azure Provider
 provider "azurerm" {
-  subscription_id = "0ca097b8-df5d-406b-8155-a4c896584838"
+  subscription_id = "SUB_HERE!!!"
   features {
       virtual_machine {
         delete_os_disk_on_deletion     = true
